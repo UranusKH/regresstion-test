@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   reporter: "mochawesome",
   fixturesFolder: false,
+  chromeWebSecurity:false,
   reporterOptions: {
     code: true,
     charts: true,

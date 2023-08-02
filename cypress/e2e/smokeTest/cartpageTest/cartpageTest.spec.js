@@ -1,12 +1,15 @@
 /// <reference types="Cypress" />
+/// <reference types="cypress-iframe"/>
+import "cypress-iframe";
 import "cypress-xpath";
+
 const { type } = require("jquery");
 
 describe("Verify 'Cart' page functionalities", function () {
   let priceTotal = [];
 
   beforeEach(() => {
-    cy.viewport(1280, 720);
+    cy.viewport(1440, 900);
   });
 
   it("Verify user able to add product in the cart", function () {
@@ -94,7 +97,6 @@ describe("Verify 'Cart' page functionalities", function () {
   });
 
   it("Verify user able to continue checkout", function () {
-
     cy.visit("http://localhost:3000/ticket-site#/");
     // 1. Go to Tamice.com
     cy.contains("Login").click();
@@ -131,11 +133,8 @@ describe("Verify 'Cart' page functionalities", function () {
     //Check all the Product exist in the "Shopping Cart"
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").each(($el) => {
       // Get the text content of the element and check if it contains 'hello'
-      cy.wrap($el).contains('Guide Tour');
+      cy.wrap($el).contains("Guide Tour");
     });
-
-
-    
   });
 
   it("Verify user able to checkout as guest", function () {
@@ -158,15 +157,27 @@ describe("Verify 'Cart' page functionalities", function () {
     // 5. Go to 'Cart' page
     cy.contains("Cart").click();
     cy.url().should("include", "/cart");
-    cy.contains("Proceed Checkout").click()
-    cy.contains("Guest Checkout").click()
+    cy.contains("Proceed Checkout").click();
+    cy.contains("Guest Checkout").click();
     cy.url().should("include", "/cart?guestCheckout=true");
-    // 3. Click 'NY Big Apple Pass'
-    // 4. Add products
-    // 5. Go to Cart Page
-    // 6. Click 'Proceed Checkout' button
-    // 7. Click 'Guest Checkout' button
-    // 8. Click 'Proceed Checkout' button
+
+    //Stripe payment
+    // cy.get('input[placeholder="Full Name (한국이름)"]').type("장길호");
+    // cy.get('input[placeholder="Last Name"]').type("Chang");
+    // cy.get('input[placeholder="First Name"]').type("Kilho");
+    // cy.get('input[placeholder="Email"]').type("kilhotest@gmail.com");
+    // cy.get('input[placeholder="Retype Email"]').type("Kilhotest@gmail.com");
+    // cy.get('input[placeholder="Phone"]').type("4154444444");
+
+    cy.wait(3000);
+    cy.getStripeElement('input[data-elements-stable-field-name="cardNumber"]', "4242424242424242");
+    cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
+    cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
+    cy.getStripeElement('input[data-elements-stable-field-name="postalCode"]', "34564");
+    cy.contains("Pay").click({ force: true });
+    cy.contains('Transaction').then(() => {
+      cy.contains('Go to My Bookings').click()
+    })
   });
 
   it("Verify user able to checkout with valid credit/debit card", function () {
@@ -180,25 +191,5 @@ describe("Verify 'Cart' page functionalities", function () {
     // 8. Type valid debit/credit card information
     // 9. Click 'Proceed Checkout' button
     // 10. Verify user able to checkout with valid credit/debit card
-  });
-
-  context("login", () => {
-    //   1. Go to Tamice.com landing page
-    //   2. Click 'Login' button
-    //   3. Click 'Non-Member Ticket Look up' link
-    //   4. Verify 'Email' input field is present on 'Order Lookup' page
-    // });
-    // it(" Verify 'Order Number' input field is present on 'Order Lookup' page   ", function () {
-    //   1. Go to Tamice.com landing page
-    //   2. Click 'Login' button
-    //   3. Click 'Non-Member Ticket Look up' link
-    //   4. Verify 'Order Number' input field is present on 'Order Lookup' page
-    // });
-    // it(" Verify 'Order Look up' button input field is present on 'Order Lookup' page  ", function () {
-    //   1. Go to Tamice.com landing page
-    //   2. Click 'Login' button
-    //   3. Click 'Non-Member Ticket Look up' link
-    //   4. Verify 'Order Look up' button input field is present on 'Order Lookup' page
-    // });
   });
 });

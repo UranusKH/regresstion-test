@@ -59,3 +59,13 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
 
   app.document.head.appendChild(style);
 }
+
+
+Cypress.Commands.add('getStripeElement', (selector, value) => {
+  cy.get('iframe')
+    .should((iframe) => expect(iframe.contents().find(selector)).to.exist)
+    .then((iframe) => cy.wrap(iframe.contents().find(selector)))
+    .within((input) => {
+      cy.wrap(input).should('not.be.disabled').clear().type(value)
+    })
+})
