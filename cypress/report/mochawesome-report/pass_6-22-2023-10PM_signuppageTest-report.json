@@ -1,0 +1,147 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-23T05:34:01.069Z",
+    "end": "2023-06-23T05:34:01.181Z",
+    "duration": 112,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7d19ee64-a6f2-4330-8f8a-52743be34590",
+      "title": "",
+      "fullFile": "cypress/e2e/smokeTest/signuppageTest/signuppageTest.spec.js",
+      "file": "cypress/e2e/smokeTest/signuppageTest/signuppageTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "15196dba-b8a5-4599-951f-54f576bf5a25",
+          "title": "Verify 'Sign up' page functionalities",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify sign up functionality",
+              "fullTitle": "Verify 'Sign up' page functionalities Verify sign up functionality",
+              "timedOut": null,
+              "duration": 49,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\n// 2. Click 'Login/Sign Up' button\n// 3. Click 'Don't have an account' button\n// 4. Click 'Create an Account' button from Sign up page\n// 5. Type all valid information\n// 6. Check 'Terms & Conditions'\n// 7. Click 'Sign Up'",
+              "err": {},
+              "uuid": "cbab66a0-d815-44eb-b051-7f15e1eb8f45",
+              "parentUUID": "15196dba-b8a5-4599-951f-54f576bf5a25",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Google sign up functionality",
+              "fullTitle": "Verify 'Sign up' page functionalities Verify Google sign up functionality",
+              "timedOut": null,
+              "duration": 22,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\n// 2. Click 'Login/Sign Up' button\n// 3. Click 'Don't have an account' button\n// 4. Click 'Google sign up' button from Sign up page\n// 5. Type all valid information\n// 6. Click 'Sign Up'",
+              "err": {},
+              "uuid": "125848f7-ec27-49eb-bb55-7d9a7a66812a",
+              "parentUUID": "15196dba-b8a5-4599-951f-54f576bf5a25",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Naver sign up functionality",
+              "fullTitle": "Verify 'Sign up' page functionalities Verify Naver sign up functionality",
+              "timedOut": null,
+              "duration": 21,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\n// 2. Click 'Login/Sign Up' button\n// 3. Click 'Don't have an account' button\n// 4. Click 'Naver sign up' button from Sign up page\n// 5. Type all valid information\n// 6. Click 'Sign Up'",
+              "err": {},
+              "uuid": "68516dcd-6ca7-4aff-beb0-8092e84a54d5",
+              "parentUUID": "15196dba-b8a5-4599-951f-54f576bf5a25",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cbab66a0-d815-44eb-b051-7f15e1eb8f45",
+            "125848f7-ec27-49eb-bb55-7d9a7a66812a",
+            "68516dcd-6ca7-4aff-beb0-8092e84a54d5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 92,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[status]_[datetime]_[name]-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "code": true,
+        "charts": true,
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "[status]_[datetime]_[name]-report",
+        "timestamp": "m/d/yyyy/hTT",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
