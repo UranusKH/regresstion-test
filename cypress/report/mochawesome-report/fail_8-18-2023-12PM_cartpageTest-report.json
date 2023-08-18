@@ -1,0 +1,156 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-08-18T19:31:28.529Z",
+    "end": "2023-08-18T19:32:50.436Z",
+    "duration": 81907,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fd9f3ad5-5ec7-48b9-a9c3-064f2ccd5278",
+      "title": "",
+      "fullFile": "cypress/e2e/smokeTest/cartpageTest/cartpageTest.spec.js",
+      "file": "cypress/e2e/smokeTest/cartpageTest/cartpageTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0e0559bf-5e7c-43b9-aabe-0d9ea6c3b0b8",
+          "title": "Verify 'Cart' page functionalities",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user able to checkout as guest from 'NY' ",
+              "fullTitle": "Verify 'Cart' page functionalities Verify user able to checkout as guest from 'NY' ",
+              "timedOut": null,
+              "duration": 30859,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://localhost:3000/ticket-site#/\");\n// Go to Tamice.com\ncy.xpath(\"//body/div[@id='root']/div[2]/div[2]/div[2]/div[1]/div[1]\").click().invoke(\"show\").contains(\"New York\").click();\n// Select City\ncy.contains(\"button\", \"NY Package Tour\").trigger(\"mouseover\").children().contains(\"NY Big Apple Pass\").click({\n  force: true\n});\ncy.wait(3000);\n// Go to 'Package' page\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]\").select(\"Big 2\");\ncy.contains(\"Adult\").click({\n  force: true\n}).invoke(\"show\");\ncy.get('img.cursor-pointer[src*=\"increment.svg\"]').click();\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]\").should(\"contain\", \"2\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"Guide Tour\").click();\n// 4. Add products\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[1]/div[2]\").children().eq(1).click();\ncy.get(\"div[role='dialog']\");\ncy.wait(2000);\ncy.xpath(\"//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]\").children().eq(1).click();\ncy.xpath(\"//span[contains(text(),'✖')]\").click({\n  force: true\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"NY Amy June 17 Big Apple Pass - regular ticket\").click();\n// Select time from the calendar box\ncy.contains(\"Add to the cart\").click();\ncy.contains(\"Cart\").click();\ncy.url().should(\"include\", \"/cart\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"Guide Tour\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"NY Amy June 17 Big Apple Pass - regular ticket\");\n// Go to 'Cart' page and check product is in the cart\ncy.contains(\"Proceed Checkout\").click();\ncy.contains(\"Guest Checkout\").click();\ncy.url().should(\"include\", \"/cart?guestCheckout=true\");\ncy.get('input[placeholder=\"Full Name (한국이름)\"]').clear().type(\"장길호\");\ncy.get('input[placeholder=\"Last Name\"]').clear().type(\"Chang\");\ncy.get('input[placeholder=\"First Name\"]').clear().type(\"Kilho\");\ncy.get('input[placeholder=\"Email\"]').clear().type(\"kilhotest@gmail.com\");\ncy.get('input[placeholder=\"Retype Email\"]').clear().type(\"kilhotest@gmail.com\");\ncy.get('input[placeholder=\"Phone\"]').clear().type(\"4154444444\");\ncy.wait(3000);\ncy.getStripeElement('input[data-elements-stable-field-name=\"cardNumber\"]', \"4242424242424242\");\ncy.getStripeElement('input[data-elements-stable-field-name=\"cardExpiry\"]', \"0425\");\ncy.getStripeElement('input[data-elements-stable-field-name=\"cardCvc\"]', \"345\");\ncy.contains(\"Pay\").click({\n  force: true\n});\n// Guest Payment checkout\ncy.contains(\"Transaction\").then(() => {\n  cy.contains(\"Go to My Bookings\").click();\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]\").should(\"contain\", \"Guide tour NY\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]\").should(\"contain\", \"NY Amy June 17 Big Apple Pass - regular ticket\");\n//Check order exist on the 'My Booking' page",
+              "err": {},
+              "uuid": "e6ee4435-5b61-47ad-bdf0-fabca91f5177",
+              "parentUUID": "0e0559bf-5e7c-43b9-aabe-0d9ea6c3b0b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user able to checkout as guest from 'SF' ",
+              "fullTitle": "Verify 'Cart' page functionalities Verify user able to checkout as guest from 'SF' ",
+              "timedOut": null,
+              "duration": 23110,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://localhost:3000/ticket-site#/\");\n// Go to Tamice.com\ncy.xpath(\"//body/div[@id='root']/div[2]/div[2]/div[2]/div[1]/div[1]\").click().invoke(\"show\");\ncy.contains(\"San Francisco\").click();\n// Select City\ncy.contains(\"button\", \"SF Package Tour\").trigger(\"mouseover\").children().contains(\"SF Big Apple Pass\").click({\n  force: true\n});\ncy.wait(3000);\n// Go to 'Package' page\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]\").select(\"SF Big 2\");\ncy.contains(\"Adult\").click({\n  force: true\n}).invoke(\"show\");\ncy.get('img.cursor-pointer[src*=\"increment.svg\"]').click();\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"Amy SF city test\").click({\n  force: true\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"amy aug 3 - demo guide tour\").click({\n  force: true\n});\n// 4. Add products\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]\").children().eq(1).click({\n  force: true\n});\ncy.get(\"div[role='dialog']\");\ncy.wait(2000);\ncy.xpath(\"//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]\").children().eq(1).click({\n  force: true\n});\ncy.xpath(\"//span[contains(text(),'✖')]\").click({\n  force: true\n});\n// Select time from the calendar box\ncy.contains(\"Add to the cart\").click();\ncy.contains(\"Cart\").click();\ncy.url().should(\"include\", \"/cart\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"Amy SF city test\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"amy aug 3 - demo guide tour\");\n// Go to 'Cart' page and check product is in the cart\ncy.contains(\"Proceed Checkout\").click({\n  force: true\n});\ncy.contains(\"Guest Checkout\").click({\n  force: true\n});\ncy.url().should(\"include\", \"/cart?guestCheckout=true\");\ncy.get('input[placeholder=\"Full Name (한국이름)\"]').clear().type(\"장길호\");\ncy.get('input[placeholder=\"Last Name\"]').clear().type(\"Chang\");\ncy.get('input[placeholder=\"First Name\"]').clear().type(\"Kilho\");\ncy.get('input[placeholder=\"Email\"]').clear().type(\"kilhotest@gmail.com\");\ncy.get('input[placeholder=\"Retype Email\"]').clear().type(\"kilhotest@gmail.com\");\ncy.get('input[placeholder=\"Phone\"]').clear().type(\"4154444444\");\ncy.wait(3000);\ncy.getStripeElement('input[data-elements-stable-field-name=\"cardNumber\"]', \"4242424242424242\");\ncy.getStripeElement('input[data-elements-stable-field-name=\"cardExpiry\"]', \"0425\");\ncy.getStripeElement('input[data-elements-stable-field-name=\"cardCvc\"]', \"345\");\ncy.contains(\"Pay\").click({\n  force: true\n});\n// Guest Payment checkout\ncy.contains(\"Transaction\").then(() => {\n  cy.contains(\"Go to My Bookings\").click();\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]\").should(\"contain\", \"Amy SF City test\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]\").should(\"contain\", \"amy aug 3 - demo guide tour\");\n//Check order exist on the 'My Booking' page",
+              "err": {
+                "message": "CypressError: Timed out retrying after 8050ms: `cy.click()` failed because this element:\n\n`<button class=\"relative flex inline-flex items-center justify-center p-2 ml-10 rounded-lg\">...</button>`\n\nis being covered by another element:\n\n`<div class=\"swal2-container swal2-center swal2-backdrop-show\" style=\"overflow-y: auto;\">...</div>`\n\nFix this problem, or use {force: true} to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying after 8050ms: `cy.click()` failed because this element:\n\n`<button class=\"relative flex inline-flex items-center justify-center p-2 ml-10 rounded-lg\">...</button>`\n\nis being covered by another element:\n\n`<div class=\"swal2-container swal2-center swal2-backdrop-show\" style=\"overflow-y: auto;\">...</div>`\n\nFix this problem, or use {force: true} to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at ensureIsDescendent (http://localhost:3000/__cypress/runner/cypress_runner.js:139711:76)\n    at ensureDescendents (http://localhost:3000/__cypress/runner/cypress_runner.js:139762:5)\n    at ensureDescendentsAndScroll (http://localhost:3000/__cypress/runner/cypress_runner.js:139768:14)\n    at ensureElIsNotCovered (http://localhost:3000/__cypress/runner/cypress_runner.js:139899:5)\n    at runAllChecks (http://localhost:3000/__cypress/runner/cypress_runner.js:140079:52)\n    at retryActionability (http://localhost:3000/__cypress/runner/cypress_runner.js:140116:16)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise.attempt.Promise.try (http://localhost:3000/__cypress/runner/cypress_runner.js:16018:29)\n    at whenStable (http://localhost:3000/__cypress/runner/cypress_runner.js:156356:65)\n    at <unknown> (http://localhost:3000/__cypress/runner/cypress_runner.js:155797:14)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (http://localhost:3000/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (http://localhost:3000/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (http://localhost:3000/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (http://localhost:3000/__cypress/runner/cypress_runner.js:16861:18)\n    at Promise._fulfill (http://localhost:3000/__cypress/runner/cypress_runner.js:16805:18)\n    at <unknown> (http://localhost:3000/__cypress/runner/cypress_runner.js:18419:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/smokeTest/cartpageTest/cartpageTest.spec.js:84:24)",
+                "diff": null
+              },
+              "uuid": "46bfd60c-9168-4389-afac-079c80821aba",
+              "parentUUID": "0e0559bf-5e7c-43b9-aabe-0d9ea6c3b0b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user able to continue checkout with login",
+              "fullTitle": "Verify 'Cart' page functionalities Verify user able to continue checkout with login",
+              "timedOut": null,
+              "duration": 23475,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://localhost:3000/ticket-site#/\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[2]/div[2]/div[1]/div[1]\").click().invoke(\"show\");\ncy.contains(\"New York\").click();\n// 1. Go to Tamice.com\ncy.contains(\"Login\").click();\n// 3. Type valid credential\ncy.get('input[placeholder=\"Email\"]').type(\"admin1@gmail.com\");\ncy.get('input[placeholder=\"Password\"]').type(\"123456\");\n// 4. Click 'Sign in' button\ncy.xpath(\"//button[contains(text(),'Login')]\").click();\ncy.contains(\"NY Package Tour\").click().invoke(\"show\");\ncy.contains(\"button\", \"NY Package Tour\").trigger(\"mouseover\").children().contains(\"NY Big Apple Pass\").click({\n  force: true\n});\ncy.wait(3000);\n// Go to 'Package' page\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]\").select(\"Big 2\");\n//Add \"Big 2\" from \"Package Tour\"\ncy.contains(\"Adult\").click({\n  force: true\n}).invoke(\"show\");\ncy.get('img.cursor-pointer[src*=\"increment.svg\"]').click({\n  force: true\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]\").should(\"contain\", \"2\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"Guide Tour\").click();\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[1]/div[2]\").children().eq(1).click({\n  force: true\n});\ncy.get(\"div[role='dialog']\");\ncy.wait(2000);\ncy.xpath(\"//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]\").children().eq(1).click({\n  force: true\n});\ncy.xpath(\"//span[contains(text(),'✖')]\").click({\n  force: true\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"NY Amy June 17 Big Apple Pass - regular ticket\").click();\ncy.contains(\"Add to the cart\").click({\n  force: true\n});\n//Add \"Big 3\" from \"Package Tour\"\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]\").select(\"Big 3\");\ncy.contains(\"Adult\").click({\n  force: true\n}).invoke(\"show\");\ncy.contains(\"Child\").click({\n  force: true\n});\ncy.get('img.cursor-pointer[src*=\"increment.svg\"]').click({\n  force: true\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]\").should(\"contain\", \"3\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]\").contains(\"NY Amy June 19 Guide Tour ticket Big Apple Pass\").click({\n  force: true\n});\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]\").children().eq(1).click({\n  force: true\n});\ncy.xpath(\"//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]\").children().eq(15).then(time => {\n  cy.wrap(time).children().eq(1).click();\n});\ncy.get(\"div[role='dialog']\");\ncy.wait(2000);\ncy.xpath(\"//span[contains(text(),'✖')]\").click({\n  force: true\n});\ncy.contains(\"Add to the cart\").click();\ncy.contains(\"Cart\").click({\n  force: true\n});\ncy.url().should(\"include\", \"/cart\");\n//Check all the Product exist in the \"Shopping Cart\"\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"Guide\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"NY Amy June 19 Guide Tour ticket Big Apple Pass\");\ncy.xpath(\"//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]\").should(\"contain\", \"NY Amy June 17 Big Apple Pass - regular ticket\");",
+              "err": {
+                "message": "CypressError: Timed out retrying after 8050ms: `cy.select()` failed because the center of this element is hidden from view:\n\n`<select class=\"\" style=\"width: 100%; height: 50px; border: 1px solid grey; appearance: none; background: url(&quot;/ticket-site/assets/icons/down_arrow.svg&quot;) 90% 50% no-repeat transparent; border-radius: 2px; margin-right: 2rem; padding: 0rem 2rem 0rem 1rem; outline: none;\">...</select>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying after 8050ms: `cy.select()` failed because the center of this element is hidden from view:\n\n`<select class=\"\" style=\"width: 100%; height: 50px; border: 1px solid grey; appearance: none; background: url(&quot;/ticket-site/assets/icons/down_arrow.svg&quot;) 90% 50% no-repeat transparent; border-radius: 2px; margin-right: 2rem; padding: 0rem 2rem 0rem 1rem; outline: none;\">...</select>`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at ensureIsDescendent (http://localhost:3000/__cypress/runner/cypress_runner.js:139726:74)\n    at ensureDescendents (http://localhost:3000/__cypress/runner/cypress_runner.js:139762:5)\n    at possiblyScrollMultipleTimes (http://localhost:3000/__cypress/runner/cypress_runner.js:139869:22)\n    at scrollContainers (http://localhost:3000/__cypress/runner/cypress_runner.js:139891:16)\n    at ensureDescendentsAndScroll (http://localhost:3000/__cypress/runner/cypress_runner.js:139895:14)\n    at ensureElIsNotCovered (http://localhost:3000/__cypress/runner/cypress_runner.js:139899:5)\n    at runAllChecks (http://localhost:3000/__cypress/runner/cypress_runner.js:140079:52)\n    at retryActionability (http://localhost:3000/__cypress/runner/cypress_runner.js:140116:16)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise.attempt.Promise.try (http://localhost:3000/__cypress/runner/cypress_runner.js:16018:29)\n    at whenStable (http://localhost:3000/__cypress/runner/cypress_runner.js:156356:65)\n    at <unknown> (http://localhost:3000/__cypress/runner/cypress_runner.js:155797:14)\n    at tryCatcher (http://localhost:3000/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (http://localhost:3000/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (http://localhost:3000/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (http://localhost:3000/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (http://localhost:3000/__cypress/runner/cypress_runner.js:16861:18)\n    at Promise._fulfill (http://localhost:3000/__cypress/runner/cypress_runner.js:16805:18)\n    at <unknown> (http://localhost:3000/__cypress/runner/cypress_runner.js:18419:46)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/smokeTest/cartpageTest/cartpageTest.spec.js:143:119)",
+                "diff": null
+              },
+              "uuid": "a7718d5e-f5cd-4d6f-a785-78ae65c70460",
+              "parentUUID": "0e0559bf-5e7c-43b9-aabe-0d9ea6c3b0b8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e6ee4435-5b61-47ad-bdf0-fabca91f5177"
+          ],
+          "failures": [
+            "46bfd60c-9168-4389-afac-079c80821aba",
+            "a7718d5e-f5cd-4d6f-a785-78ae65c70460"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 77444,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[status]_[datetime]_[name]-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "code": true,
+        "charts": true,
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "[status]_[datetime]_[name]-report",
+        "timestamp": "m/d/yyyy/hTT",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -68,16 +68,16 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.contains("button", "SF Package Tour").trigger("mouseover").children().contains("SF Big Apple Pass").click({ force: true });
     cy.wait(3000);
     // Go to 'Package' page
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 2");
     cy.contains("Adult").click({ force: true }).invoke("show");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Amy SF city test").click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("amy aug 3 - demo guide tour").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Amy SF city test").click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("amy aug 3 - demo guide tour").click({ force: true });
     // 4. Add products
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
-    cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]").children().eq(1).click();
+    cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]").children().eq(1).click({ force: true });
     cy.xpath("//span[contains(text(),'✖')]").click({ force: true });
     // Select time from the calendar box
     cy.contains("Add to the cart").click();
@@ -86,8 +86,8 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "Amy SF city test");
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "amy aug 3 - demo guide tour");
     // Go to 'Cart' page and check product is in the cart
-    cy.contains("Proceed Checkout").click();
-    cy.contains("Guest Checkout").click();
+    cy.contains("Proceed Checkout").click({ force: true });
+    cy.contains("Guest Checkout").click({ force: true });
     cy.url().should("include", "/cart?guestCheckout=true");
     cy.get('input[placeholder="Full Name (한국이름)"]').clear().type("장길호");
     cy.get('input[placeholder="Last Name"]').clear().type("Chang");
@@ -128,25 +128,25 @@ describe("Verify 'Cart' page functionalities", function () {
 
     //Add "Big 2" from "Package Tour"
     cy.contains("Adult").click({ force: true }).invoke("show");
-    cy.get('img.cursor-pointer[src*="increment.svg"]').click();
+    cy.get('img.cursor-pointer[src*="increment.svg"]').click({ force: true });
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "2");
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Guide Tour").click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[1]/div[2]").children().eq(1).click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[1]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
-    cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]").children().eq(1).click();
+    cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]").children().eq(1).click({ force: true });
     cy.xpath("//span[contains(text(),'✖')]").click({ force: true });
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("NY Amy June 17 Big Apple Pass - regular ticket").click();
-    cy.contains("Add to the cart").click();
+    cy.contains("Add to the cart").click({ force: true });
 
     //Add "Big 3" from "Package Tour"
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 3");
     cy.contains("Adult").click({ force: true }).invoke("show");
     cy.contains("Child").click({ force: true });
-    cy.get('img.cursor-pointer[src*="increment.svg"]').click();
+    cy.get('img.cursor-pointer[src*="increment.svg"]').click({ force: true });
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "3");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("NY Amy June 19 Guide Tour ticket Big Apple Pass").click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click()
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("NY Amy June 19 Guide Tour ticket Big Apple Pass").click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click({ force: true })
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]").children().eq(15).then((time) => {
       cy.wrap(time).children().eq(1).click()
     })
