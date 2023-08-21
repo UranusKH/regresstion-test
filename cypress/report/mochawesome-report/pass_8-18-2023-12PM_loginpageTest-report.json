@@ -1,0 +1,185 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-08-18T19:33:24.798Z",
+    "end": "2023-08-18T19:33:34.723Z",
+    "duration": 9925,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "61844610-e948-43a5-8274-edf1cfe3bf0d",
+      "title": "",
+      "fullFile": "cypress/e2e/smokeTest/loginpageTest/loginpageTest.spec.js",
+      "file": "cypress/e2e/smokeTest/loginpageTest/loginpageTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "26be29e1-ba0a-4bed-b457-e05927e71d44",
+          "title": "Verify 'Login' page functionalities",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify forgot password functionality",
+              "fullTitle": "Verify 'Login' page functionalities Verify forgot password functionality",
+              "timedOut": null,
+              "duration": 5436,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\ncy.visit(Cypress.env(\"url\"));\n// 2. Click 'Login/Sign Up' button\ncy.contains(\"Login\").click();\n// 3. Click 'Forgot Password' button\ncy.contains(\"Forgot Password\").click();\ncy.url().should(\"include\", \"/user/forgot-password\");\n// 4. Type valid 'User email'\ncy.get('input[placeholder=\"Email\"]').type(\"123456\");\n// 5. Click 'Reset Password' button\ncy.contains(\"Reset password\").click();\n// 7. Go to user email and verify user receive reset password link",
+              "err": {},
+              "uuid": "4f540158-56cd-470f-b04b-12d78d93daae",
+              "parentUUID": "26be29e1-ba0a-4bed-b457-e05927e71d44",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify login functionality",
+              "fullTitle": "Verify 'Login' page functionalities Verify login functionality",
+              "timedOut": null,
+              "duration": 2224,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\ncy.visit(Cypress.env(\"url\"));\n// 2. Click 'Login/Sign Up' button\ncy.contains(\"Login\").click();\n// 3. Type valid credential\ncy.get('input[placeholder=\"Email\"]').type(\"admin1@gmail.com\");\ncy.get('input[placeholder=\"Password\"]').type(\"123456\");\n// 4. Click 'Sign in' button\ncy.xpath(\"//button[contains(text(),'Login')]\").click();",
+              "err": {},
+              "uuid": "31daadd2-bf2e-4ae3-89fa-7b9da347fa9d",
+              "parentUUID": "26be29e1-ba0a-4bed-b457-e05927e71d44",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Google login functionality",
+              "fullTitle": "Verify 'Login' page functionalities Verify Google login functionality",
+              "timedOut": null,
+              "duration": 156,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\n// 2. Click 'Login/Sign Up' button\n// 3. Click 'Google Login' button\n// 4. Choose user id\n// 5. Verify user able to login with google account",
+              "err": {},
+              "uuid": "15b068bd-1ddb-41ae-9f98-2bffd938fc1d",
+              "parentUUID": "26be29e1-ba0a-4bed-b457-e05927e71d44",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Naver login functionality",
+              "fullTitle": "Verify 'Login' page functionalities Verify Naver login functionality",
+              "timedOut": null,
+              "duration": 36,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\n// 2. Click 'Login/Sign Up' button\n// 3. Click 'Naver Login' button\n// 4. Choose user id\n// 5. Verify user able to login with naver account",
+              "err": {},
+              "uuid": "bc9c7073-613d-421c-9413-6c89265fb118",
+              "parentUUID": "26be29e1-ba0a-4bed-b457-e05927e71d44",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify create 'Non-Member ticket look up' functionality",
+              "fullTitle": "Verify 'Login' page functionalities Verify create 'Non-Member ticket look up' functionality",
+              "timedOut": null,
+              "duration": 57,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Go to Tamice.com\n// 2. Click 'Login/Sign Up' button\n// 3. Click 'Non-Member ticket lookup' button\n// 4. Type valid 'User email'\n// 5. Type valid user 'Order number'\n// 5. Click 'Order Lookup' button\n// 7. Verify user able see orders in the 'My booking' page",
+              "err": {},
+              "uuid": "b09ded2c-667c-4596-8603-825a06a297d9",
+              "parentUUID": "26be29e1-ba0a-4bed-b457-e05927e71d44",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4f540158-56cd-470f-b04b-12d78d93daae",
+            "31daadd2-bf2e-4ae3-89fa-7b9da347fa9d",
+            "15b068bd-1ddb-41ae-9f98-2bffd938fc1d",
+            "bc9c7073-613d-421c-9413-6c89265fb118",
+            "b09ded2c-667c-4596-8603-825a06a297d9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7909,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[status]_[datetime]_[name]-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "code": true,
+        "charts": true,
+        "reportDir": "cypress/report/mochawesome-report",
+        "reportFilename": "[status]_[datetime]_[name]-report",
+        "timestamp": "m/d/yyyy/hTT",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
