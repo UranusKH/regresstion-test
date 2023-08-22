@@ -6,6 +6,8 @@ describe("Verify 'Sign up' page functionalities", function () {
     // browser with a 720p monitor
     cy.viewport(1280, 720);
   });
+
+  
   it("Verify sign up functionality", function () {
     // Get the current date
     const currentDate = new Date();
