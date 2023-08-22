@@ -115,4 +115,5 @@ describe("Verify 'Cart' page functionalities", function () {
     //Check order exist on the 'My Booking' page
   });
 
+
 });
