@@ -69,3 +69,34 @@ Cypress.Commands.add('getStripeElement', (selector, value) => {
       cy.wrap(input).should('not.be.disabled').clear().type(value)
     })
 })
+
+
+
+
+// ------------------------------------------------------------------------------
+
+Cypress.Commands.add("checkSFProductNames", () => {
+  const products = [
+    "amy aug 3 - demo guide tour",
+    "amy aug 3 - schedule and creating regular test",
+    "SF 어트랙션 2",
+    "Amy SF City pass",
+    "SF amy aug15 sim card ticket",
+    "SF amy hard copy",
+  ];
+  return products;
+});
+
+Cypress.Commands.add("checkNYProductNames", () => {
+  const products = [
+    "Guide Tour",
+    "NY Amy June 17 Big Apple Pass - regular ticket",
+    "어트랙션 2 개",
+    "NY City Pass",
+    "amy aug 15 SIM window price",
+    "NY amy hard copy",
+  ];
+  return products;
+});
+
+

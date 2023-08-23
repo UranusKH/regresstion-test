@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   reporter: "mochawesome",
   fixturesFolder: false,
-  chromeWebSecurity:false,
+  chromeWebSecurity: false,
   reporterOptions: {
     code: true,
     charts: true,
@@ -18,7 +18,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {},
     env: {
-      url: "https://thernlovendev.github.io/ticket-site/#/",
+      url: "http://localhost:3000/ticket-site",
       hideXhr: true
     },
     defaultCommandTimeout: 8000,

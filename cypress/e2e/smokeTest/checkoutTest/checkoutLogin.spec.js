@@ -16,11 +16,11 @@ describe("Verify 'Cart' page functionalities", function () {
     // 1. Go to Tamice.com
     cy.contains("Login").click();
     // 3. Type valid credential
-    cy.get('input[placeholder="Email"]').type("admin1@gmail.com");
-    cy.get('input[placeholder="Password"]').type("123456");
+    cy.get('input[placeholder="Email"]').type("accountKilho@gmail.com");
+    cy.get('input[placeholder="Password"]').type("Qwer123$");
     // 4. Click 'Sign in' button
     cy.xpath("//button[contains(text(),'Login')]").click();
-    cy.contains("NY Package Tour").click().invoke("show");
+    // cy.contains("NY Package Tour").click().invoke("show");
     cy.contains("button", "NY Package Tour").trigger("mouseover").children().contains("NY Big Apple Pass").click({ force: true });
     cy.wait(3000);
     // Go to 'Package' page
