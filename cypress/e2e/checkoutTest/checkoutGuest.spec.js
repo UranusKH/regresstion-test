@@ -4,8 +4,6 @@ import "cypress-iframe";
 import "cypress-xpath";
 const { type } = require("jquery");
 
-
-
 describe("Verify 'Cart' page functionalities", function () {
   beforeEach(() => {
     cy.viewport(1920, 1080);
@@ -19,24 +17,28 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.contains("button", "NY Package Tour").trigger("mouseover").children().contains("NY Big Apple Pass").click({ force: true });
     cy.wait(3000);
     // Go to 'Package' page
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 2");
     cy.contains("Adult").click({ force: true }).invoke("show");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "2");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Guide Tour").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]").should("contain", "2");
+    cy.contains("Load More").click();
+    cy.contains("Load More").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("tamicetamice").click();
     // 4. Add products
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[1]/div[2]").children().eq(1).click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[12]/div[2]").children().eq(1).click();
     cy.get("div[role='dialog']");
     cy.wait(2000);
+    //click '<' from the calendar
+    cy.xpath("/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[2]").click();
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]").children().eq(1).click();
     cy.xpath("//span[contains(text(),'✖')]").click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("NY Amy June 17 Big Apple Pass - regular ticket").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("test ticket save").click();
     // Select time from the calendar box
-    cy.contains("Add to the cart").click();
+    cy.contains("Add to Cart").click();
     cy.contains("Cart").click();
     cy.url().should("include", "/cart");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "Guide Tour");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "NY Amy June 17 Big Apple Pass - regular ticket");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "tamicetamice");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "test ticket save");
     // Go to 'Cart' page and check product is in the cart
     cy.contains("Proceed Checkout").click();
     cy.contains("Guest Checkout").click();
@@ -47,17 +49,22 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.get('input[placeholder="Email"]').clear().type("kilhotest@gmail.com");
     cy.get('input[placeholder="Retype Email"]').clear().type("kilhotest@gmail.com");
     cy.get('input[placeholder="Phone"]').clear().type("4154444444");
-    cy.wait(3000);
-    cy.getStripeElement('input[data-elements-stable-field-name="cardNumber"]', "4242424242424242");
-    cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
-    cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
+    // Guest info
+    cy.iframe(".sq-card-component").find("#cardNumber").type("4111111111111111");
+    cy.iframe(".sq-card-component").find("#expirationDate").type("1124");
+    cy.iframe(".sq-card-component").find("#cvv").type("111");
+    cy.iframe(".sq-card-component").find("#postalCode").type("11111");
     cy.contains("Pay").click({ force: true });
-    // Guest Payment checkout
+    //Checkout Square
+    // cy.getStripeElement('input[data-elements-stable-field-name="cardNumber"]', "4242424242424242");
+    // cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
+    // cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
+    // Guest stripe checkout
     cy.contains("Transaction").then(() => {
       cy.contains("Go to My Bookings").click();
     });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "Guide Tour");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "NY Amy June 17 Big Apple Pass - regular ticket");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "tamicetamice");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "test ticket save");
     //Check order exist on the 'My Booking' page
   });
 
@@ -70,15 +77,17 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.contains("button", "SF Package Tour").trigger("mouseover").children().contains("SF Big Apple Pass").click({ force: true });
     cy.wait(3000);
     // Go to 'Package' page
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 2");
     cy.contains("Adult").click({ force: true }).invoke("show");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Amy SF city test").click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("amy aug 3 - demo guide tour").click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("SF Amy aug 7 hyperlink test - big apple pass").click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("amy aug 3 - demo guide tour").click({ force: true });
     // 4. Add products
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[8]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
+    cy.xpath("/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[2]").click();
+    cy.xpath("/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[2]").click();
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]")
       .children()
       .eq(1)
@@ -88,10 +97,10 @@ describe("Verify 'Cart' page functionalities", function () {
       });
     cy.xpath("//span[contains(text(),'✖')]").click({ force: true });
     // Select time from the calendar box
-    cy.contains("Add to the cart").click();
+    cy.contains("Add to Cart").click();
     cy.contains("Cart").click();
     cy.url().should("include", "/cart");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "Amy SF city test");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "SF Amy aug 7 hyperlink test - big apple pass");
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/main[1]/div[1]/div[1]/div[1]").should("contain", "amy aug 3 - demo guide tour");
     // Go to 'Cart' page and check product is in the cart
     cy.contains("Proceed Checkout").click({ force: true });
@@ -104,18 +113,24 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.get('input[placeholder="Retype Email"]').clear().type("kilhotest@gmail.com");
     cy.get('input[placeholder="Phone"]').clear().type("4154444444");
     cy.wait(3000);
-    cy.getStripeElement('input[data-elements-stable-field-name="cardNumber"]', "4242424242424242");
-    cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
-    cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
+
+    cy.iframe(".sq-card-component").find("#cardNumber").type("4111111111111111");
+    cy.iframe(".sq-card-component").find("#expirationDate").type("1124");
+    cy.iframe(".sq-card-component").find("#cvv").type("111");
+    cy.iframe(".sq-card-component").find("#postalCode").type("11111");
+    cy.contains("Pay").click({ force: true });
+
+    // Guest Square checkout
+    // cy.getStripeElement('input[data-elements-stable-field-name="cardNumber"]', "4242424242424242");
+    // cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
+    // cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
     cy.contains("Pay").click({ force: true });
     // Guest Payment checkout
     cy.contains("Transaction").then(() => {
       cy.contains("Go to My Bookings").click();
     });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "Amy SF city test");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "SF Amy aug 7 hyperlink test - big apple pass");
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "amy aug 3 - demo guide tour");
     //Check order exist on the 'My Booking' page
   });
-
-
 });

@@ -24,13 +24,13 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.contains("button", "NY Package Tour").trigger("mouseover").children().contains("NY Big Apple Pass").click({ force: true });
     cy.wait(3000);
     // Go to 'Package' page
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 2");
     //Add "Big 2" from "Package Tour"
     cy.contains("Adult").click({ force: true }).invoke("show");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "2");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Guide Tour").click();
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[1]/div[2]").children().eq(1).click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]").should("contain", "2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("Guide Tour").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[12]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]")
@@ -41,15 +41,15 @@ describe("Verify 'Cart' page functionalities", function () {
         cy.wrap(zero).eq(0).click();
       });
     cy.xpath("//span[contains(text(),'✖')]").click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("NY Amy June 17 Big Apple Pass - regular ticket").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("NY Amy June 17 Big Apple Pass - regular ticket").click();
     cy.contains("Add to the cart").click({ force: true });
     //Add "Big 3" from "Package Tour"
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 3"), { force: true };
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("Big 3"), { force: true };
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[1]/select[1]").select("Child");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "3");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("NY Amy June 19 Guide Tour ticket Big Apple Pass").click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]").should("contain", "3");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("NY Amy June 19 Guide Tour ticket Big Apple Pass").click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]")
@@ -83,13 +83,13 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.contains("button", "SF Package Tour").trigger("mouseover").children().contains("SF Big Apple Pass").click({ force: true });
     cy.wait(3000);
     // Go to 'Package' page
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 2");
     //Add "Big 2" from "Package Tour"
     cy.contains("Adult").click({ force: true }).invoke("show");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "2");
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("amy aug 3 - demo guide tour").click({force:true});
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[4]/div[2]").children().eq(1).click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]").should("contain", "2");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("amy aug 3 - demo guide tour").click({force:true});
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]")
@@ -100,19 +100,19 @@ describe("Verify 'Cart' page functionalities", function () {
         cy.wrap(zero).eq(0).click();
       });
     cy.xpath("//span[contains(text(),'✖')]").click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Amy SF city test").click();
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("Amy SF city test").click();
     cy.contains("Add to the cart").click({ force: true });
     //Add "Big 3" from "Package Tour"
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 3"), { force: true };
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[2]/select[1]").select("SF Big 3"), { force: true };
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[1]/select[1]").select("Child");
     cy.get('img.cursor-pointer[src*="increment.svg"]').click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").should("contain", "3");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]").should("contain", "3");
     cy.contains('Load More').click()
     cy.wait(1000)
     cy.contains('Load More').click()
     cy.wait(1000)
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]").contains("Sf kilho sep guide tour").click({ force: true });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[7]/div[12]/div[2]").children().eq(1).click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]").contains("Sf kilho sep guide tour").click({ force: true });
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[12]/div[2]").children().eq(1).click({ force: true });
     cy.get("div[role='dialog']");
     cy.wait(2000);
     cy.xpath("//body/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]")

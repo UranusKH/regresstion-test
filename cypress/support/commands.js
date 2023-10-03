@@ -38,7 +38,7 @@ Cypress.Commands.add("getPrice", (itemIdentifier) => {
 
 // cy.getPrice("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[2]").then((price) => {
 //     console.log(price);
-//     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[3]/div[4]/div[2]").invoke('text').then((text) => {
+//     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]").invoke('text').then((text) => {
 //     const quantity = parseInt(text)
 //     console.log(quantity);
   
@@ -60,7 +60,7 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
   app.document.head.appendChild(style);
 }
 
-
+//Stripe Payment
 Cypress.Commands.add('getStripeElement', (selector, value) => {
   cy.get('iframe')
     .should((iframe) => expect(iframe.contents().find(selector)).to.exist)
@@ -70,8 +70,18 @@ Cypress.Commands.add('getStripeElement', (selector, value) => {
     })
 })
 
+// Adding a custom command to deal with iframe
+Cypress.Commands.add('iframe', { prevSubject: 'element' }, ($iframe) => {
+  // For more info on handling iframes in Cypress, visit:
+  // https://www.cypress.io/blog/2020/02/12/working-with-iframes-in-cypress/
+  
+  // Assert that <iframe> is loaded
+  cy.wrap($iframe).should(iframe => expect(iframe.contents().find('body')).to.exist);
 
+  // Return <body> contents because it's a second "window"
+  return cy.wrap($iframe.contents().find('body'));
 
+})
 
 // ------------------------------------------------------------------------------
 
