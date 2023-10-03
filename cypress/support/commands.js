@@ -99,4 +99,3 @@ Cypress.Commands.add("checkNYProductNames", () => {
   return products;
 });
 
-

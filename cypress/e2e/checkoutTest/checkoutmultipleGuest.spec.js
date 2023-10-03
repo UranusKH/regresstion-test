@@ -82,10 +82,9 @@ describe("Verify 'Cart' page functionalities", function () {
       cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
       cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
       cy.contains("Pay").click({ force: true });
+      cy.wait(3000);
       // Guest Payment checkout
-      cy.contains("Transaction").then(() => {
-        cy.contains("Go to My Bookings").click();
-      });
+      cy.contains("Go to My Bookings").click();
       cy.wait(3000);
       cy.checkNYProductNames("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").then((products) => {
         products.forEach((product) => {
@@ -170,9 +169,8 @@ describe("Verify 'Cart' page functionalities", function () {
       cy.getStripeElement('input[data-elements-stable-field-name="cardExpiry"]', "0425");
       cy.getStripeElement('input[data-elements-stable-field-name="cardCvc"]', "345");
       cy.contains("Pay").click({ force: true });
-      cy.contains("Transaction").then(() => {
-        cy.contains("Go to My Bookings").click();
-      });
+      cy.wait(3000);
+      cy.contains("Go to My Bookings").click();
       // Guest Payment checkout
       cy.wait(3000);
       cy.checkSFProductNames("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").then((products) => {

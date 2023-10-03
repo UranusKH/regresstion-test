@@ -4,6 +4,8 @@ import "cypress-iframe";
 import "cypress-xpath";
 const { type } = require("jquery");
 
+
+
 describe("Verify 'Cart' page functionalities", function () {
   beforeEach(() => {
     cy.viewport(1920, 1080);
@@ -54,7 +56,7 @@ describe("Verify 'Cart' page functionalities", function () {
     cy.contains("Transaction").then(() => {
       cy.contains("Go to My Bookings").click();
     });
-    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "Guide tour NY");
+    cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "Guide Tour");
     cy.xpath("//body/div[@id='root']/div[2]/div[4]/div[1]/div[4]").should("contain", "NY Amy June 17 Big Apple Pass - regular ticket");
     //Check order exist on the 'My Booking' page
   });
