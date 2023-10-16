@@ -14,7 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
-    "cypress": "^12.17.4",
+    "cypress": "^13.3.1",
     "cypress-iframe": "^1.0.1",
     "cypress-plugin-stripe-elements": "^1.0.2",
     "mochawesome": "^7.1.3",
